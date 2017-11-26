@@ -7,9 +7,17 @@ const theTimer = document.querySelector(".timer");
 // clock values in array
 var timer = [0,0,0,0]; // pos 0 = min, pos 1 = , pos 2 = hundredth of a second, pos 3 = thousandth of a sec
 
+// Add leading zero to numbers 9 or below (for visual look of counter in browser):
+/** Helper function **/
+function leadingZero(time) {
+    if (time <= 9) {
+        time = "0" + time; // javascript handles "0" as a real number
+    }
+    return time;
+}
 // Run a standard minute/second/hundredths timer:
 function runTimer(){
-    let currentTime = timer[0] + ": " + timer[1] + ": " + timer[2];
+    let currentTime = leadingZero(timer[0]) + ": " + leadingZero(timer[1]) + ": " + leadingZero(timer[2]);
     theTimer.innerHTML = currentTime;
     timer[3]++;
 
