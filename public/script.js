@@ -29,9 +29,19 @@ function runTimer(){
 
 // Match the text entered with the provided text on the page
 function spellCheck() {
-    let textEntered = testArea.value;
-    console.log(textEntered);
-}
+    let textEntered = testArea.value; // test area
+    let originTextMatched = originText.substring(0, textEntered.length); // string outside test area
+
+    if (textEntered == originText) { // test to see if string outside test area matches exactly test complete
+        testWrapper.style.borderColor = "#429890"; // green/ successful for short string
+    } else {
+        if (textEntered == originTextMatched) {
+            testWrapper.style.borderColor = "#65CCF3"; // blue/ matching string
+        } else {
+            testWrapper.style.borderColor = "#E95D0F"; // orange fail/error
+        }
+    }
+} // end spellCheck
 
 // Start the timer:
 function start() {
