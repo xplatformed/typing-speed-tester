@@ -60,7 +60,14 @@ function start() {
 
 // Reset everything
 function reset() {
-    console.log("reset button has been pressed");
+   clearInterval(interval); // clear any interval process in background
+    interval = null; // prevent new interval being setup with new index number
+    timer = [0,0,0,0]; // set timer array back to zero
+    timerRunning = false; // allows us to run new interval
+
+    testArea.value = "";
+    theTimer.innerHTML = "00:00:00"; // reset timer back to zero
+    testWrapper.style.borderColor = "grey";
 }
 
 
