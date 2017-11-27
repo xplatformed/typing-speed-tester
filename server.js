@@ -8,6 +8,6 @@ app.use(express.static(__dirname + '/public'));
 
 // Binds the app to a port on our machine
 app.listen(port, ()=> {
-    console.log(`Typing speed testing Server is up on port ${3000}`);
+    console.log(`Typing speed testing Server is up on port ${port}`);
 });
 
