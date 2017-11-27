@@ -6,6 +6,8 @@ const theTimer = document.querySelector(".timer");
 
 // clock values in array
 var timer = [0,0,0,0]; // pos 0 = min, pos 1 = , pos 2 = hundredth of a second, pos 3 = thousandth of a sec
+var interval;
+var timerRunning = false;
 
 // Add leading zero to numbers 9 or below (for visual look of counter in browser):
 /** Helper function **/
@@ -15,6 +17,7 @@ function leadingZero(time) {
     }
     return time;
 }
+
 // Run a standard minute/second/hundredths timer:
 function runTimer(){
     let currentTime = leadingZero(timer[0]) + ": " + leadingZero(timer[1]) + ": " + leadingZero(timer[2]);
@@ -33,6 +36,7 @@ function spellCheck() {
     let originTextMatched = originText.substring(0, textEntered.length); // string outside test area
 
     if (textEntered == originText) { // test to see if string outside test area matches exactly test complete
+        clearInterval(interval); // clears the setInterval to stop the timer
         testWrapper.style.borderColor = "#429890"; // green/ successful for short string
     } else {
         if (textEntered == originTextMatched) {
@@ -47,8 +51,9 @@ function spellCheck() {
 function start() {
     let textEnteredLength = testArea.value.length;
     // start an interval
-    if (textEnteredLength === 0) {
-        setInterval(runTimer, 10); // runTimer function every thousandth of a second using setInterval
+    if (textEnteredLength === 0 && !timerRunning) {
+        timerRunning = true;
+        interval = setInterval(runTimer, 10); // runTimer function every thousandth of a second using setInterval
     }
     console.log(textEnteredLength);
 }
