@@ -12,3 +12,6 @@
 
 -script.js Maps constants to index.html
 
+-This repo can be accessed with SSH or with HTTPS
+-
+-Contributors xplatformed
